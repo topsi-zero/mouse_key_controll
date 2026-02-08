@@ -5,13 +5,11 @@ from pynput import mouse, keyboard
 from pynput.keyboard import Key, KeyCode
 from pynput.mouse import Button
 
-# src/main.py
-# Simple mouse control using keyboard (WASD or arrow keys). Press ESC to exit.
 # Requires: pip install pynput
 
 
-MOUSE_INTERVAL = 0.05  # seconds between moves
-BASE_SPEED = 8         # pixels per interval
+MOUSE_INTERVAL = 0.001  # seconds between moves
+BASE_SPEED = 2         # pixels per interval
 
 # Residuals to accumulate fractional movement and avoid stuttering
 rem_x = 0.0
@@ -55,7 +53,7 @@ def mover_loop():
         dx = dy = 0.0
         speed = BASE_SPEED
 
-        # acceleration while shift held
+        # acceleration while shift
         if Key.shift in pressed or 'shift' in pressed:
             speed *= 3
 
@@ -83,7 +81,7 @@ def mover_loop():
                 rem_x -= move_x
                 rem_y -= move_y
 
-        time.sleep(MOUSE_INTERVAL)
+       # time.sleep(MOUSE_INTERVAL)
 
 
 def main():
